@@ -74,8 +74,7 @@ void System::Run(const Mat& image,Rect2d& boundingBox,bool & tracked ){
     bool trackedTmp;
     compressivetracker->processFrame(image_gray,box,trackedTmp);
     boundingBox = box;
-    //if(tracked)
-        tracked = trackedTmp;
+    //if(tracked)  tracked = trackedTmp;
 #endif
     //return;
     Rect bb;

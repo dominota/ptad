@@ -25,7 +25,7 @@ Parameters:
    num_patches: 100
    dvarfilter: 1
    increase_ncc_samples: 2
-   pyramidlevels: 3
+   pyramidlevels: 5
    show_debug_info: 1
    tracking: KCF
    detection: Fern 

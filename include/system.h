@@ -14,10 +14,10 @@
 #include <boost/thread/locks.hpp>
 
 //#define TRACKER_LKAlgorithm
-#define KCFTrackerAlgorithm
+//#define KCFTrackerAlgorithm
 //#define BoostingTrackerAlgorithm
 //#define MILTrackerAlgorithm
-//#define CompressiveTrackerAlgorithm
+#define CompressiveTrackerAlgorithm
 #include "kcf_tracker.hpp"
 #include "dsst_tracker.hpp"
 #include "CompressiveTracker.h"

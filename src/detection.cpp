@@ -761,7 +761,7 @@ void Detection::detect(){
     directionFilterValid = 0;
  //   cv::Mat VariantFilterimage = timages[index].clone();
 #ifdef using_pyramid
-   // processNumsofLevels = 5;
+    processNumsofLevels = 5;
     int index = scaleindex.at(1.0);    // orignal image detection
     for (int i=0;i<gridpyramids.size();i++){//FIXME: BottleNeck
 
@@ -1462,7 +1462,7 @@ void Detection::generatePositiveData(int num_warps){
 #endif
             if(i <=increase_ncc_samples)
             {
-                 float angleLearning = (float)rng.uniform(-angle_init *0.75, angle_init *0.75); //0.75
+                 float angleLearning = (float)rng.uniform(-angle_init *0.5, angle_init *0.5); //0.75
 #if defined(FernFeature) || defined(CompressiveFeature) || defined(HaarLikeFeature)
                 resample(originalimage, RotatedRect(center, size, angleLearning), warped);
 #endif

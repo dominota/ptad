@@ -277,7 +277,7 @@ REPEAT:
             ss.clear();
             ss<<"/home/nubot/result/tracking"<<frames<<".jpg";
             cv::imwrite(ss.str(),frame);*/
-            if (cv::waitKey(27) == 'q') //CT 15_17  LK  kcf 27
+            if (cv::waitKey(15) == 'q') //CT 15_17  LK  kcf 27
                 break;
         }
         // tsystem.detect_running = false;
