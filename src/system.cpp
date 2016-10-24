@@ -51,6 +51,10 @@ void System::Run(const Mat& image,Rect2d& boundingBox,bool & tracked ){
     bool trackedTmp = trackerProxy_->update(image_gray,boundingBox);
     if(tracked) tracked = trackedTmp;
 #elif defined(KCFTrackerAlgorithm) ||  defined(BoostingTrackerAlgorithm)  ||  defined(MILTrackerAlgorithm)
+    static int dtracked = false;
+    static bool lastTracked = true;
+    tracked = lastTracked;
+    dtracked = false;
     if(image.channels() >= 1)
         cvtColor(image, image_gray, CV_BGR2GRAY);
     else
@@ -74,7 +78,8 @@ void System::Run(const Mat& image,Rect2d& boundingBox,bool & tracked ){
     bool trackedTmp;
     compressivetracker->processFrame(image_gray,box,trackedTmp);
     boundingBox = box;
-    //if(tracked)  tracked = trackedTmp;
+    if(tracked)
+        tracked = trackedTmp;
 #endif
     //return;
     Rect bb;
@@ -106,8 +111,8 @@ void System::Run(const Mat& image,Rect2d& boundingBox,bool & tracked ){
             }
             if(maxNCC > 0.65) //否则不需要更新模板
             {
-                trackingTemplate_.push_back(templateTracked);
-                //tracked = true;
+                if(tracked && maxNCC >0.75) trackingTemplate_.push_back(templateTracked); // tracking right add template
+                if(maxNCC > 0.8) dtracked = true; //仅仅表示该帧为正，并不更新模板
             }
             else
                 tracked = false;
@@ -219,7 +224,7 @@ void System::Run(const Mat& image,Rect2d& boundingBox,bool & tracked ){
                 //std::cout<<"detection NCC " << nccP<<" "<<nccP2<<std::endl;
                 //我检测之前的图片有个位置，如果跟踪帧目标失踪了或者被半遮挡了，如果没有出错，进行更新就会导致出错
                 //因此还需要判断当前检测
-                if( nccP2 > nccP && nccP2 >0.9/*+ 0.15*/ || (adjusting == ReInitialization && nccP2 >nccP && nccP2 >0.9)) //可能有变化
+                if( nccP2 > nccP && nccP2 >0.85/*+ 0.15*/ || (adjusting == ReInitialization && nccP2 >nccP && nccP2 >0.85)) //可能有变化
                 {
                     re_initialization = true;
                     boundingBox = foundBox;
@@ -249,6 +254,13 @@ void System::Run(const Mat& image,Rect2d& boundingBox,bool & tracked ){
     else
         boundingBox = bb;
     }
+#if defined(TRACKER_LKAlgorithm) //gray image initialization
+#elif defined(KCFTrackerAlgorithm) //color image initialization
+    lastTracked = tracked;
+    if(dtracked) tracked = tracked; //增加更多的跟踪结果召回率，然后尽可能的保留有精确度(减小漂移)
+#elif defined(BoostingTrackerAlgorithm)  ||  defined(MILTrackerAlgorithm)
+#elif defined(CompressiveTrackerAlgorithm)
+#endif
 }
 void System::filterVar(const cv::Size box,const cv::Mat & sum, const cv::Mat & sqsum,cv::Mat & result)
 {

@@ -642,7 +642,7 @@ void Detection::detectProcess(cv::Mat & image, BoundingBox & tboundingBox, bool 
                 std::cout<<"maxindex:  "<<maxindex<<std::endl;
             }
             //if there is ONE such a cluster, re-initialize the tracker
-             if (confident_detections==1  && maxFastindex == didx /*&& maxFastConf > maxNearindex+0.05*/){ //maxconf > tconfig and 同时bbOverlap < 0.5
+             if (confident_detections==1  && maxindex == didx && maxFastConf > maxNearindex+0.05){ //maxconf > tconfig and 同时bbOverlap < 0.5
                  if(is_debug)
                      printf("Found a better match(location change)..reinitializing tracking\n");
                  // if((! & tconf < 0.6) || cconf[didx] > tconf+0.15) //maxconf > tconfig and 同时bbOverlap < 0.5
@@ -1118,7 +1118,7 @@ void Detection::learn(){
     {
         if(is_debug)
             printf("Middle classifier..not training\n");
-       lastvalid=false;
+      // lastvalid=false;
        return;
     }
     if(isin[2]==1){
@@ -1462,7 +1462,7 @@ void Detection::generatePositiveData(int num_warps){
 #endif
             if(i <=increase_ncc_samples)
             {
-                 float angleLearning = (float)rng.uniform(-angle_init *0.5, angle_init *0.5); //0.75
+                 float angleLearning = (float)rng.uniform(-angle_init *0.75, angle_init *0.75); //0.75
 #if defined(FernFeature) || defined(CompressiveFeature) || defined(HaarLikeFeature)
                 resample(originalimage, RotatedRect(center, size, angleLearning), warped);
 #endif

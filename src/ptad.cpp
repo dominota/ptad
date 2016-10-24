@@ -134,7 +134,7 @@ int main(int argc, char * argv[]){
   //  selectedTrackingAlgorithm = selectedTrackingAlgorithm+"5fps";
     std::vector<std::string> rpaths = FileFunctions::Dir(paths[paths.size()-1].c_str(),true);
     paths.erase(paths.end());
-    int i = 7;
+    int i = 8;
     // for(int i = 8; i < paths.size(); i++)
     {
 #ifdef VOT_DATA
@@ -277,7 +277,7 @@ REPEAT:
             ss.clear();
             ss<<"/home/nubot/result/tracking"<<frames<<".jpg";
             cv::imwrite(ss.str(),frame);*/
-            if (cv::waitKey(15) == 'q') //CT 15_17  LK  kcf 27
+            if (cv::waitKey(27) == 'q') //CT 15_17  LK  kcf 27
                 break;
         }
         // tsystem.detect_running = false;
