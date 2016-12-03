@@ -1,5 +1,5 @@
  
-cd OpenTLD
+
 mkdir build
 cd build
 cmake .. 
