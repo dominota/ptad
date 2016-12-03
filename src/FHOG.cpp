@@ -28,32 +28,54 @@ HogFeature::HogFeature(){
 }
 
 HogFeature::HogFeature(uint cell_size,cv::Size & size_scale){
-    cv::Size2d targetSize = size_scale ;
-    double scaleFactor = sqrt(MAX_TRACKING_AREA / targetSize.area());
-    _tmpl_sz = sizeFloor(targetSize * scaleFactor);
+    bool setWell = false;
+    int label = 0;
+    while(!setWell){
+        label++;
+        cv::Size2d targetSize = size_scale ;
+        double scaleFactor = sqrt(MAX_TRACKING_AREA * label / targetSize.area());
+        _tmpl_sz = sizeFloor(targetSize * scaleFactor);
 
-     _cell_size = cell_size;
+        _cell_size = cell_size;
 
-     _tmpl_sz.width = ( ( (int)(_tmpl_sz.width / (2 * _cell_size)) ) * 2 * _cell_size ) +_cell_size*2;
-     _tmpl_sz.height = ( ( (int)(_tmpl_sz.height / (2 * _cell_size)) ) * 2 * _cell_size ) +_cell_size*2;
+        _tmpl_sz.width = ( ( (int)(_tmpl_sz.width / (2 * _cell_size)) ) * 2 * _cell_size ) +_cell_size*2;
+        _tmpl_sz.height = ( ( (int)(_tmpl_sz.height / (2 * _cell_size)) ) * 2 * _cell_size ) +_cell_size*2;
 
-    featureNums = static_cast<int>(floor(_tmpl_sz.width / _cell_size -2) * floor(_tmpl_sz.height / _cell_size -2) * (NUM_SECTOR * 3 + 4));
+        featureNums = static_cast<int>(floor(_tmpl_sz.width / _cell_size -2) *
+                                       floor(_tmpl_sz.height / _cell_size -2) * (NUM_SECTOR * 3 + 4));
+        if(featureNums!=0)
+        {
+            setWell = true;
+            break;
+        }
+    }
 
 
 
 }
 void HogFeature::init(uint cell_size, cv::Size & size_scale)
 {
-     cv::Size2d targetSize = size_scale ;
-     double scaleFactor = sqrt(MAX_TRACKING_AREA / targetSize.area());
-     _tmpl_sz = sizeFloor(targetSize * scaleFactor);
+    bool setWell = false;
+    int label = 0;
+    while(!setWell){
+        label++;
+        cv::Size2d targetSize = size_scale ;
+        double scaleFactor = sqrt(MAX_TRACKING_AREA  * label / targetSize.area());
+        _tmpl_sz = sizeFloor(targetSize * scaleFactor);
 
-     _cell_size = cell_size;
+        _cell_size = cell_size;
 
-     _tmpl_sz.width = ( ( (int)(_tmpl_sz.width / (2 * _cell_size)) ) * 2 * _cell_size ) +_cell_size*2;
-     _tmpl_sz.height = ( ( (int)(_tmpl_sz.height / (2 * _cell_size)) ) * 2 * _cell_size )+_cell_size*2 ;
+        _tmpl_sz.width = ( ( (int)(_tmpl_sz.width / (2 * _cell_size)) ) * 2 * _cell_size ) +_cell_size*2;
+        _tmpl_sz.height = ( ( (int)(_tmpl_sz.height / (2 * _cell_size)) ) * 2 * _cell_size )+_cell_size*2 ;
 
-     featureNums = static_cast<int>(floor(_tmpl_sz.width / _cell_size -2) * floor(_tmpl_sz.height / _cell_size -2) * (NUM_SECTOR * 3 + 4));
+        featureNums = static_cast<int>(floor(_tmpl_sz.width / _cell_size -2) *
+                                       floor(_tmpl_sz.height / _cell_size -2) * (NUM_SECTOR * 3 + 4));
+        if(featureNums!=0)
+        {
+            setWell = true;
+            break;
+        }
+    }
 }
 
 void HogFeature::set_tmpl_sz(uint cell_size,cv::Size & size_scale)
@@ -97,7 +119,7 @@ void HogFeature::getFeature(const cv::Mat & image,cv::Mat & feature){
     getFeatureMaps(&zz, _cell_size, &_map);
     normalizeAndTruncate(_map, 0.2f);
     PCAFeatureMaps(_map);
-    feature = Mat(Size(_map->numFeatures*_map->sizeX*_map->sizeY,1), CV_32FC1, _map->map).clone();  // Procedure do deal with cv::Mat multichannel bug
+    feature = Mat(Size(_map->numFeatures*_map->sizeX*_map->sizeY,1), CV_32FC1, _map->mapPCA).clone();  // Procedure do deal with cv::Mat multichannel bug
     CV_Assert(featureNums == feature.cols);
-    freeFeatureMapObject(&_map);
+    //freeFeatureMapObject(&_map);
 }

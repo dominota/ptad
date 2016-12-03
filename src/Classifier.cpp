@@ -20,6 +20,7 @@ void Classifier::read(const FileNode& file){
     thr_nn = (float)file["thr_nn"];
     thr_nn_valid = (float)file["thr_nn_valid"];
    // compDetector.initCT();
+    acum = 0;
 }
 
 void Classifier::prepare(const Size& scales){
@@ -157,21 +158,30 @@ void Classifier::trainNN(const vector<cv::Mat>& nn_examples,int nums_possamples)
     int nums_halfsamples = nn_examples.size()/2;
     int res = 0;
     float maxPconf = 0;
+#if defined(FernFeature)
+    float shift = 0.0; //fern 0.00
+#elif defined(CompressiveFeature)
+    float shift = 0.05; //fern 0.00
+#elif defined(HaarLikeFeature)
+    float shift = 0.05; //fern 0.00
+#elif defined(HOGFeature)
+    float shift = 0.10; //fern 0.00
+#endif
     if(nn_examples.size() % 2 != 0 ) res = nums_halfsamples *2; //奇数
-    for (int i=0;i< nums_halfsamples;i++){                          //  For each example
-        maxPconf = NNConf(nn_examples[i],isin,conf,dummy);                      //  Measure Relative similarity
-        if (y[i]==1 && conf<=thr_nn+0.05  && conf >0.5){                                //    if y(i) == 1 && conf1 <= tld.model.thr_nn % 0.65 + 0.1
-            if (isin[1]<0){                                          //      if isnan(isin(2))
-                pEx = vector<Mat>(1,nn_examples[i]);                 //        tld.pex = x(:,i);
-                continue;                                            //        continue;
-            }                                                        //      end
-            //pEx.insert(pEx.begin()+isin[1],nn_examples[i]);        //      tld.pex = [tld.pex(:,1:isin(2)) x(:,i) tld.pex(:,isin(2)+1:end)]; % add to model
+    for (int i=0;i< nums_halfsamples;i++){                         //  For each example
+        maxPconf = NNConf(nn_examples[i],isin,conf,dummy);         //  Measure Relative similarity
+        if (y[i]==1 && conf<=thr_nn+shift  && conf >0.5){          //    if y(i) == 1 && conf1 <= tld.model.thr_nn % 0.65 + 0.1
+            if (isin[1]<0){                                        //      if isnan(isin(2))
+                pEx = vector<Mat>(1,nn_examples[i]);               //        tld.pex = x(:,i);
+                continue;                                          //        continue;
+            }                                                      //      end
+            //pEx.insert(pEx.begin()+isin[1],nn_examples[i]);      //      tld.pex = [tld.pex(:,1:isin(2)) x(:,i) tld.pex(:,isin(2)+1:end)]; % add to model
             pEx.push_back(nn_examples[i]);
         }
 
         int j = 2*nums_halfsamples -i-1; //从最后到
         maxPconf = NNConf(nn_examples[j],isin,conf,dummy);
-        if (y[j]==1 && conf<=thr_nn+0.05  && conf >0.5){                                //    if y(i) == 1 && conf1 <= tld.model.thr_nn % 0.65 + 0.1
+        if (y[j]==1 && conf<=thr_nn+shift  && conf >0.5){                                //    if y(i) == 1 && conf1 <= tld.model.thr_nn % 0.65 + 0.1
             if (isin[1]<0){                                          //      if isnan(isin(2))
                 pEx = vector<Mat>(1,nn_examples[j]);                 //        tld.pex = x(:,i);
                 continue;                                            //        continue;
@@ -186,7 +196,7 @@ void Classifier::trainNN(const vector<cv::Mat>& nn_examples,int nums_possamples)
     if(res != 0)
     {
          maxPconf = NNConf(nn_examples[res],isin,conf,dummy);
-        if (y[res]==1 && conf<=thr_nn+0.05  && conf >0.5){                                //    if y(i) == 1 && conf1 <= tld.model.thr_nn % 0.65 + 0.1
+        if (y[res]==1 && conf<=thr_nn+shift  && conf >0.5){                                //    if y(i) == 1 && conf1 <= tld.model.thr_nn % 0.65 + 0.1
             pEx.push_back(nn_examples[res]);
         }
         if(y[res]==0 && conf>0.5)                                      //  if y(i) == 0 && conf1 > 0.5
@@ -205,7 +215,7 @@ void Classifier::trainNN(const vector<cv::Mat>& nn_examples,int nums_possamples)
 }                                                                  //  end
 
 
-float Classifier::NNConf(const Mat& example, vector<int>& isin,float& rsconf,float& csconf){
+float Classifier::NNConf(const Mat& example, vector<int>& isin, float& rsconf,float& csconf){
   /*Inputs:
    * -NN Patch
    * Outputs:
@@ -227,7 +237,6 @@ float Classifier::NNConf(const Mat& example, vector<int>& isin,float& rsconf,flo
   bool anyP=false;
   int maxPidx,validatedPart = ceil(pEx.size()*valid);
   float nccN, maxN=0;
-
   float averP = 0;
   bool anyN=false;
   for (int i=0;i<pEx.size();i++){
@@ -263,7 +272,7 @@ float Classifier::NNConf(const Mat& example, vector<int>& isin,float& rsconf,flo
   dP = 1 - csmaxP;
   csconf =(float)dN / (dN + dP);
   averP  = averP / pEx.size();
-  return 1;
+  return maxP;
 }
 
 void Classifier::evaluateNCCTh(const vector<cv::Mat>& nExT){

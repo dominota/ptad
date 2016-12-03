@@ -23,7 +23,7 @@ Contacts: joaopfaro@gmail.com
 //int freeFeatureMapObject (CvLSVMFeatureMap **);
 
 class HogFeature {
-    const double MAX_TRACKING_AREA = 128;
+    const double MAX_TRACKING_AREA = 128; //Car 256
 public:
     HogFeature();
     HogFeature(uint cell_size, cv::Size & size_scale);

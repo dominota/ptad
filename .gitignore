@@ -1,0 +1,300 @@
+/bin/bin2libsvm
+/bin/la_svm
+/bin/la_test
+/bin/libsvm2bin
+/bin/ptad
+/build/CMakeCache.txt
+/build/CMakeFiles/2.8.12.2/CMakeCCompiler.cmake
+/build/CMakeFiles/2.8.12.2/CMakeCXXCompiler.cmake
+/build/CMakeFiles/2.8.12.2/CMakeDetermineCompilerABI_C.bin
+/build/CMakeFiles/2.8.12.2/CMakeDetermineCompilerABI_CXX.bin
+/build/CMakeFiles/2.8.12.2/CMakeSystem.cmake
+/build/CMakeFiles/2.8.12.2/CompilerIdC/a.out
+/build/CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c
+/build/CMakeFiles/2.8.12.2/CompilerIdCXX/a.out
+/build/CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp
+/build/CMakeFiles/cmake.check_cache
+/build/CMakeFiles/CMakeDirectoryInformation.cmake
+/build/CMakeFiles/CMakeOutput.log
+/build/CMakeFiles/Makefile2
+/build/CMakeFiles/Makefile.cmake
+/build/CMakeFiles/patdmodules.dir/build.make
+/build/CMakeFiles/patdmodules.dir/cmake_clean.cmake
+/build/CMakeFiles/patdmodules.dir/cmake_clean_target.cmake
+/build/CMakeFiles/patdmodules.dir/CXX.includecache
+/build/CMakeFiles/patdmodules.dir/DependInfo.cmake
+/build/CMakeFiles/patdmodules.dir/depend.internal
+/build/CMakeFiles/patdmodules.dir/depend.make
+/build/CMakeFiles/patdmodules.dir/flags.make
+/build/CMakeFiles/patdmodules.dir/link.txt
+/build/CMakeFiles/patdmodules.dir/progress.make
+/build/CMakeFiles/patdmodules.dir/src/Classifier.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/compressive.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/detection.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/feature.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/FHOG.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/fhogtools.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/FileFunctions.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/haarfeature.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/hogfeature.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/LKTracker.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/onlineBoosting.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/onlineMIL.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/system.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/trackerFeature.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/trackerFeatureSet.cpp.o
+/build/CMakeFiles/patdmodules.dir/src/utils.cpp.o
+/build/CMakeFiles/progress.marks
+/build/CMakeFiles/ptad.dir/build.make
+/build/CMakeFiles/ptad.dir/cmake_clean.cmake
+/build/CMakeFiles/ptad.dir/CXX.includecache
+/build/CMakeFiles/ptad.dir/DependInfo.cmake
+/build/CMakeFiles/ptad.dir/depend.internal
+/build/CMakeFiles/ptad.dir/depend.make
+/build/CMakeFiles/ptad.dir/flags.make
+/build/CMakeFiles/ptad.dir/link.txt
+/build/CMakeFiles/ptad.dir/progress.make
+/build/CMakeFiles/ptad.dir/src/ptad.cpp.o
+/build/CMakeFiles/SVM.dir/build.make
+/build/CMakeFiles/SVM.dir/C.includecache
+/build/CMakeFiles/SVM.dir/cmake_clean.cmake
+/build/CMakeFiles/SVM.dir/cmake_clean_target.cmake
+/build/CMakeFiles/SVM.dir/CXX.includecache
+/build/CMakeFiles/SVM.dir/DependInfo.cmake
+/build/CMakeFiles/SVM.dir/depend.internal
+/build/CMakeFiles/SVM.dir/depend.make
+/build/CMakeFiles/SVM.dir/flags.make
+/build/CMakeFiles/SVM.dir/link.txt
+/build/CMakeFiles/SVM.dir/progress.make
+/build/CMakeFiles/SVM.dir/SVM/blas/daxpy.c.o
+/build/CMakeFiles/SVM.dir/SVM/blas/ddot.c.o
+/build/CMakeFiles/SVM.dir/SVM/blas/dnrm2.c.o
+/build/CMakeFiles/SVM.dir/SVM/blas/dscal.c.o
+/build/CMakeFiles/SVM.dir/SVM/linear.cpp.o
+/build/CMakeFiles/SVM.dir/SVM/tron.cpp.o
+/build/CMakeFiles/TargetDirectories.txt
+/build/cmake_install.cmake
+/build/incSVM/CMakeFiles/bin2libsvm.dir/bin2libsvm.cpp.o
+/build/incSVM/CMakeFiles/bin2libsvm.dir/build.make
+/build/incSVM/CMakeFiles/bin2libsvm.dir/C.includecache
+/build/incSVM/CMakeFiles/bin2libsvm.dir/cmake_clean.cmake
+/build/incSVM/CMakeFiles/bin2libsvm.dir/CXX.includecache
+/build/incSVM/CMakeFiles/bin2libsvm.dir/DependInfo.cmake
+/build/incSVM/CMakeFiles/bin2libsvm.dir/depend.internal
+/build/incSVM/CMakeFiles/bin2libsvm.dir/depend.make
+/build/incSVM/CMakeFiles/bin2libsvm.dir/flags.make
+/build/incSVM/CMakeFiles/bin2libsvm.dir/kcache.c.o
+/build/incSVM/CMakeFiles/bin2libsvm.dir/kernel.c.o
+/build/incSVM/CMakeFiles/bin2libsvm.dir/lasvm.c.o
+/build/incSVM/CMakeFiles/bin2libsvm.dir/link.txt
+/build/incSVM/CMakeFiles/bin2libsvm.dir/messages.c.o
+/build/incSVM/CMakeFiles/bin2libsvm.dir/progress.make
+/build/incSVM/CMakeFiles/bin2libsvm.dir/vector.c.o
+/build/incSVM/CMakeFiles/CMakeDirectoryInformation.cmake
+/build/incSVM/CMakeFiles/la_incr.dir/build.make
+/build/incSVM/CMakeFiles/la_incr.dir/C.includecache
+/build/incSVM/CMakeFiles/la_incr.dir/cmake_clean.cmake
+/build/incSVM/CMakeFiles/la_incr.dir/CXX.includecache
+/build/incSVM/CMakeFiles/la_incr.dir/DependInfo.cmake
+/build/incSVM/CMakeFiles/la_incr.dir/depend.internal
+/build/incSVM/CMakeFiles/la_incr.dir/depend.make
+/build/incSVM/CMakeFiles/la_incr.dir/flags.make
+/build/incSVM/CMakeFiles/la_incr.dir/kcache.c.o
+/build/incSVM/CMakeFiles/la_incr.dir/kernel.c.o
+/build/incSVM/CMakeFiles/la_incr.dir/la_incr.cpp.o
+/build/incSVM/CMakeFiles/la_incr.dir/lasvm.c.o
+/build/incSVM/CMakeFiles/la_incr.dir/link.txt
+/build/incSVM/CMakeFiles/la_incr.dir/messages.c.o
+/build/incSVM/CMakeFiles/la_incr.dir/progress.make
+/build/incSVM/CMakeFiles/la_incr.dir/vector.c.o
+/build/incSVM/CMakeFiles/la_svm.dir/build.make
+/build/incSVM/CMakeFiles/LaSVM.dir/build.make
+/build/incSVM/CMakeFiles/laSVM.dir/build.make
+/build/incSVM/CMakeFiles/la_svm.dir/C.includecache
+/build/incSVM/CMakeFiles/LaSVM.dir/C.includecache
+/build/incSVM/CMakeFiles/laSVM.dir/C.includecache
+/build/incSVM/CMakeFiles/la_svm.dir/cmake_clean.cmake
+/build/incSVM/CMakeFiles/LaSVM.dir/cmake_clean.cmake
+/build/incSVM/CMakeFiles/laSVM.dir/cmake_clean.cmake
+/build/incSVM/CMakeFiles/LaSVM.dir/cmake_clean_target.cmake
+/build/incSVM/CMakeFiles/laSVM.dir/cmake_clean_target.cmake
+/build/incSVM/CMakeFiles/la_svm.dir/CXX.includecache
+/build/incSVM/CMakeFiles/la_svm.dir/DependInfo.cmake
+/build/incSVM/CMakeFiles/LaSVM.dir/DependInfo.cmake
+/build/incSVM/CMakeFiles/laSVM.dir/DependInfo.cmake
+/build/incSVM/CMakeFiles/la_svm.dir/depend.internal
+/build/incSVM/CMakeFiles/LaSVM.dir/depend.internal
+/build/incSVM/CMakeFiles/laSVM.dir/depend.internal
+/build/incSVM/CMakeFiles/la_svm.dir/depend.make
+/build/incSVM/CMakeFiles/LaSVM.dir/depend.make
+/build/incSVM/CMakeFiles/laSVM.dir/depend.make
+/build/incSVM/CMakeFiles/la_svm.dir/flags.make
+/build/incSVM/CMakeFiles/LaSVM.dir/flags.make
+/build/incSVM/CMakeFiles/laSVM.dir/flags.make
+/build/incSVM/CMakeFiles/la_svm.dir/kcache.c.o
+/build/incSVM/CMakeFiles/LaSVM.dir/kcache.c.o
+/build/incSVM/CMakeFiles/la_svm.dir/kernel.c.o
+/build/incSVM/CMakeFiles/LaSVM.dir/kernel.c.o
+/build/incSVM/CMakeFiles/la_svm.dir/lasvm.c.o
+/build/incSVM/CMakeFiles/LaSVM.dir/lasvm.c.o
+/build/incSVM/CMakeFiles/la_svm.dir/la_svm.cpp.o
+/build/incSVM/CMakeFiles/la_svm.dir/link.txt
+/build/incSVM/CMakeFiles/LaSVM.dir/link.txt
+/build/incSVM/CMakeFiles/laSVM.dir/link.txt
+/build/incSVM/CMakeFiles/la_svm.dir/messages.c.o
+/build/incSVM/CMakeFiles/LaSVM.dir/messages.c.o
+/build/incSVM/CMakeFiles/la_svm.dir/progress.make
+/build/incSVM/CMakeFiles/LaSVM.dir/progress.make
+/build/incSVM/CMakeFiles/laSVM.dir/progress.make
+/build/incSVM/CMakeFiles/la_svm.dir/vector.c.o
+/build/incSVM/CMakeFiles/LaSVM.dir/vector.c.o
+/build/incSVM/CMakeFiles/la_test.dir/build.make
+/build/incSVM/CMakeFiles/la_test.dir/C.includecache
+/build/incSVM/CMakeFiles/la_test.dir/cmake_clean.cmake
+/build/incSVM/CMakeFiles/la_test.dir/CXX.includecache
+/build/incSVM/CMakeFiles/la_test.dir/DependInfo.cmake
+/build/incSVM/CMakeFiles/la_test.dir/depend.internal
+/build/incSVM/CMakeFiles/la_test.dir/depend.make
+/build/incSVM/CMakeFiles/la_test.dir/flags.make
+/build/incSVM/CMakeFiles/la_test.dir/kcache.c.o
+/build/incSVM/CMakeFiles/la_test.dir/kernel.c.o
+/build/incSVM/CMakeFiles/la_test.dir/lasvm.c.o
+/build/incSVM/CMakeFiles/la_test.dir/la_test.cpp.o
+/build/incSVM/CMakeFiles/la_test.dir/link.txt
+/build/incSVM/CMakeFiles/la_test.dir/messages.c.o
+/build/incSVM/CMakeFiles/la_test.dir/progress.make
+/build/incSVM/CMakeFiles/la_test.dir/vector.c.o
+/build/incSVM/CMakeFiles/libsvm2bin.dir/build.make
+/build/incSVM/CMakeFiles/libsvm2bin.dir/C.includecache
+/build/incSVM/CMakeFiles/libsvm2bin.dir/cmake_clean.cmake
+/build/incSVM/CMakeFiles/libsvm2bin.dir/CXX.includecache
+/build/incSVM/CMakeFiles/libsvm2bin.dir/DependInfo.cmake
+/build/incSVM/CMakeFiles/libsvm2bin.dir/depend.internal
+/build/incSVM/CMakeFiles/libsvm2bin.dir/depend.make
+/build/incSVM/CMakeFiles/libsvm2bin.dir/flags.make
+/build/incSVM/CMakeFiles/libsvm2bin.dir/kcache.c.o
+/build/incSVM/CMakeFiles/libsvm2bin.dir/kernel.c.o
+/build/incSVM/CMakeFiles/libsvm2bin.dir/lasvm.c.o
+/build/incSVM/CMakeFiles/libsvm2bin.dir/libsvm2bin.cpp.o
+/build/incSVM/CMakeFiles/libsvm2bin.dir/link.txt
+/build/incSVM/CMakeFiles/libsvm2bin.dir/messages.c.o
+/build/incSVM/CMakeFiles/libsvm2bin.dir/progress.make
+/build/incSVM/CMakeFiles/libsvm2bin.dir/vector.c.o
+/build/incSVM/CMakeFiles/progress.marks
+/build/incSVM/cmake_install.cmake
+/build/incSVM/Makefile
+/build/kcf/CMakeFiles/CMakeDirectoryInformation.cmake
+/build/kcf/CMakeFiles/kcf.dir/3rdparty/cv_ext/math_spectrums.cpp.o
+/build/kcf/CMakeFiles/kcf.dir/3rdparty/cv_ext/shift.cpp.o
+/build/kcf/CMakeFiles/kcf.dir/3rdparty/piotr/src/gradientMex.cpp.o
+/build/kcf/CMakeFiles/kcf.dir/build.make
+/build/kcf/CMakeFiles/kcf.dir/cf_libs/common/math_helper.cpp.o
+/build/kcf/CMakeFiles/kcf.dir/cmake_clean.cmake
+/build/kcf/CMakeFiles/kcf.dir/cmake_clean_target.cmake
+/build/kcf/CMakeFiles/kcf.dir/CXX.includecache
+/build/kcf/CMakeFiles/kcf.dir/DependInfo.cmake
+/build/kcf/CMakeFiles/kcf.dir/depend.internal
+/build/kcf/CMakeFiles/kcf.dir/depend.make
+/build/kcf/CMakeFiles/kcf.dir/flags.make
+/build/kcf/CMakeFiles/kcf.dir/link.txt
+/build/kcf/CMakeFiles/kcf.dir/progress.make
+/build/kcf/CMakeFiles/progress.marks
+/build/kcf/cmake_install.cmake
+/build/kcf/Makefile
+/build/Makefile
+/build/PTAD.cbp
+/build/scaleCT/CMakeFiles/CMakeDirectoryInformation.cmake
+/build/scaleCT/CMakeFiles/compressiveTracking.dir/build.make
+/build/scaleCT/CMakeFiles/compressiveTracking.dir/cmake_clean.cmake
+/build/scaleCT/CMakeFiles/compressiveTracking.dir/cmake_clean_target.cmake
+/build/scaleCT/CMakeFiles/compressiveTracking.dir/CompressiveTracker.cpp.o
+/build/scaleCT/CMakeFiles/compressiveTracking.dir/CXX.includecache
+/build/scaleCT/CMakeFiles/compressiveTracking.dir/DependInfo.cmake
+/build/scaleCT/CMakeFiles/compressiveTracking.dir/depend.internal
+/build/scaleCT/CMakeFiles/compressiveTracking.dir/depend.make
+/build/scaleCT/CMakeFiles/compressiveTracking.dir/flags.make
+/build/scaleCT/CMakeFiles/compressiveTracking.dir/link.txt
+/build/scaleCT/CMakeFiles/compressiveTracking.dir/progress.make
+/build/scaleCT/CMakeFiles/progress.marks
+/build/scaleCT/cmake_install.cmake
+/build/scaleCT/Makefile
+/bin/la_incr
+/CMakeLists.txt.user.3.3-pre1
+/CMakeLists.txt.user
+/lib/libcompressiveTracking.a
+/lib/libkcf.a
+/lib/libLaSVM.a
+/lib/libpatdmodules.a
+/lib/libSVM.a
+/parameters.yml~
+/"PTAD parpers/~$\344\277\235\345\257\206.docx"
+/"PTAD parpers/\344\277\235\345\257\206.docx"
+/PTAD parpers/bare_jrnl.tex
+/PTAD parpers/ieeeconf.zip
+/PTAD parpers/IEEEtran/00289.jpg
+/PTAD parpers/IEEEtran/00290.jpg
+/PTAD parpers/IEEEtran/00291.jpg
+/PTAD parpers/IEEEtran/00292.jpg
+/PTAD parpers/IEEEtran/00293.jpg
+/PTAD parpers/IEEEtran/00294.jpg
+/PTAD parpers/IEEEtran/00295.jpg
+/PTAD parpers/IEEEtran/00296.jpg
+/PTAD parpers/IEEEtran/00297.jpg
+/PTAD parpers/IEEEtran/00298.jpg
+/PTAD parpers/IEEEtran/00299.jpg
+/PTAD parpers/IEEEtran/00300.jpg
+/PTAD parpers/IEEEtran/00301.jpg
+/PTAD parpers/IEEEtran/00302.jpg
+/PTAD parpers/IEEEtran/00303.jpg
+/PTAD parpers/IEEEtran/00304.jpg
+/PTAD parpers/IEEEtran/00305.jpg
+/PTAD parpers/IEEEtran/00306.jpg
+/PTAD parpers/IEEEtran/00307.jpg
+/PTAD parpers/IEEEtran/00308.jpg
+/PTAD parpers/IEEEtran/00309.jpg
+/"PTAD parpers/IEEEtran/\346\226\260\345\273\272\346\226\207\346\234\254\346\226\207\346\241\243.txt"
+/PTAD parpers/IEEEtran/bare_adv.tex
+/PTAD parpers/IEEEtran/bare_conf_compsoc.tex
+/PTAD parpers/IEEEtran/bare_conf.tex
+/PTAD parpers/IEEEtran/bare_jrnl.aux
+/PTAD parpers/IEEEtran/bare_jrnl.bbl
+/PTAD parpers/IEEEtran/bare_jrnl.blg
+/PTAD parpers/IEEEtran/bare_jrnl_compsoc.aux
+/PTAD parpers/IEEEtran/bare_jrnl_compsoc.log
+/PTAD parpers/IEEEtran/bare_jrnl_compsoc.pdf
+/PTAD parpers/IEEEtran/bare_jrnl_compsoc.synctex.gz
+/PTAD parpers/IEEEtran/bare_jrnl_compsoc.tex
+/PTAD parpers/IEEEtran/bare_jrnl_comsoc.aux
+/PTAD parpers/IEEEtran/bare_jrnl_comsoc.log
+/PTAD parpers/IEEEtran/bare_jrnl_comsoc.pdf
+/PTAD parpers/IEEEtran/bare_jrnl_comsoc.synctex.gz
+/PTAD parpers/IEEEtran/bare_jrnl_comsoc.tex
+/PTAD parpers/IEEEtran/bare_jrnl.dvi
+/PTAD parpers/IEEEtran/bare_jrnl.log
+/PTAD parpers/IEEEtran/bare_jrnl.pdf
+/PTAD parpers/IEEEtran/bare_jrnl.rar
+/PTAD parpers/IEEEtran/bare_jrnl.synctex.gz
+/PTAD parpers/IEEEtran/bare_jrnl.tex
+/PTAD parpers/IEEEtran/bare_jrnl.tex.bak
+/PTAD parpers/IEEEtran/bare_jrnl.tex.sav
+/PTAD parpers/IEEEtran/bare_jrnl_transmag.aux
+/PTAD parpers/IEEEtran/bare_jrnl_transmag.log
+/PTAD parpers/IEEEtran/bare_jrnl_transmag.lyx
+/PTAD parpers/IEEEtran/bare_jrnl_transmag.pdf
+/PTAD parpers/IEEEtran/bare_jrnl_transmag.synctex.gz
+/PTAD parpers/IEEEtran/bare_jrnl_transmag.tex
+/PTAD parpers/IEEEtranBST.zip
+/PTAD parpers/IEEEtran/changelog.txt
+/PTAD parpers/IEEEtran/Fig1(a).pdf
+/PTAD parpers/IEEEtran/Fig1(b).pdf
+/PTAD parpers/IEEEtran/Fig2.pdf
+/PTAD parpers/IEEEtran/Fig3.pdf
+/PTAD parpers/IEEEtran/IEEEtran.cls
+/PTAD parpers/IEEEtran/IEEEtran_HOWTO.pdf
+/PTAD parpers/IEEEtran/README
+/PTAD parpers/IEEEtran.zip
+/LICENSE
+/kcf/.gitignore
+/"PTAD parpers/~$\344\277\235\345\257\206.docx"
+/"PTAD parpers/\344\277\235\345\257\206.docx"
+/"PTAD parpers/IEEEtran/\346\226\260\345\273\272\346\226\207\346\234\254\346\226\207\346\241\243.txt"

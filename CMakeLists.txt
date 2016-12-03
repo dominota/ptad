@@ -15,7 +15,7 @@ endif(CMAKE_COMPILER_IS_GNUCC)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "/opt/OpenCV3.0/share/OpenCV")
 include("/opt/OpenCV3.0/share/OpenCV/OpenCVConfig.cmake")
 
-find_package(Boost REQUIRED COMPONENTS thread system)
+find_package(Boost REQUIRED COMPONENTS thread system chrono)
 include_directories(${PROJECT_SOURCE_DIR}/include
                     ${OpenCV_INCLUDE_DIRS}
                     ${Boost_INCLUDE_DIRS})

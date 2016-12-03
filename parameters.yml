@@ -9,8 +9,8 @@ Parameters:
    thr_fern: 0.6
    thr_nn: 0.65
    thr_nn_valid: 0.7
-   num_closest_init: 10
-   num_warps_init: 20
+   num_closest_init: 15
+   num_warps_init: 30
    noise_init: 5
    angle_init: 20
    shift_init: 0.02
@@ -23,10 +23,10 @@ Parameters:
    scale_update: 0.02
    overlap: 0.2
    num_patches: 100
-   dvarfilter: 1
-   increase_ncc_samples: 2
-   pyramidlevels: 5
-   show_debug_info: 1
+   dvarfilter: 0
+   increase_ncc_samples: 1
+   pyramidlevels: 3
+   show_debug_info: 0
    tracking: KCF
    detection: Fern 
    bb_x: 288

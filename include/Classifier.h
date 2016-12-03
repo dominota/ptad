@@ -15,10 +15,10 @@
 #include <hogfeature.h>
 using namespace cv;
 
-#define  using_pyramid
+//#define  using_pyramid
 #define  FernFeature
-//#define  CompressiveFeature
-//#define  HaarLikeFeature
+#define  CompressiveFeature // no using_pyramid
+#define  HaarLikeFeature  // no using_pyramid
 #define  HOGFeature  //HOG must use image pyramids
 
 class Classifier{
@@ -77,8 +77,9 @@ public:
   float thrN;  //Negative threshold
   float thrP;  //Positive thershold
   //NN Members
-  std::vector<cv::Mat> pEx;  //NN positive examples
-  std::vector<cv::Mat> wpEx; //NN positive examples
+  std::vector<cv::Mat> pEx;  //otherwarp templates
+  std::vector<cv::Mat> incrpEx; //warp templates with best box
+  std::vector<cv::Mat> opEx; //  template from orginal image
   std::vector<cv::Mat> nEx;  //NN negative examples
 
   compressive compDetector;

@@ -12,12 +12,15 @@
 #include <boost/thread/shared_mutex.hpp>
 #include <boost/thread/condition_variable.hpp>
 #include <boost/thread/locks.hpp>
+#include <boost/chrono.hpp>
+#include <boost/chrono/chrono.hpp>
 
 //#define TRACKER_LKAlgorithm
 #define KCFTrackerAlgorithm
 //#define BoostingTrackerAlgorithm
 //#define MILTrackerAlgorithm
 //#define CompressiveTrackerAlgorithm
+
 #include "kcf_tracker.hpp"
 #include "dsst_tracker.hpp"
 #include "CompressiveTracker.h"
@@ -55,7 +58,7 @@ public:
     boost::thread thread_detected;
     bool detect_running;
     boost::thread thread_constraint_search;
-    boost::mutex undetecedTrackMutex;
+    boost::timed_mutex undetecedTrackMutex;
     boost::mutex untrackDetectedMutex;
     boost::condition_variable  newTrackFrame;
 

@@ -48,8 +48,9 @@ private:
 	vector<Rect> detectBox;
 	Mat detectFeatureValue;
 	RNG rng;
-	vector<float> radios;    //yqh: 记录detectBox对应的分类结果
-    float radioMaxLast;	     //yqh: 记录上一帧分类器输出的radio
+    vector<float> radios;
+    float ratiosInit;
+    float radioMaxLast;
 	int PaticleNum;
 private:
 	void HaarFeature(Rect& _objectBox, int _numFeature);
@@ -59,10 +60,9 @@ private:
 	void classifierUpdate(Mat& _sampleFeatureValue, vector<float>& _mu, vector<float>& _sigma, float _learnRate);
 	void radioClassifier(Mat& _sampleFeatureValue, int& _radioMaxIndex);
 public:
-	void processFrame(Mat& _frame, Rect& _objectBox);
+    void processFrame(Mat& _frame, Rect& _objectBox,bool & tracked);
     void init(const Mat& image, Rect& _objectBox);
 public://yqh
 	void PaticleFilter(Mat& _frame, Rect& _objectBox, int PaticleNum, int& _radioMaxIndex);
-	void DrawPaticleWeights(Mat& _WeightImg, vector<Rect>& _sampleBox, int PaticleNum, vector<float>& _radios);//在图像中绘制出粒子权重
-
+    void DrawPaticleWeights(Mat& _WeightImg, vector<Rect>& _sampleBox, int PaticleNum, vector<float>& _radios);
 };

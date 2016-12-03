@@ -263,6 +263,13 @@ void CompressiveTracker::init(const Mat& image, Rect& _objectBox)
 	getFeatureValue(imageIntegral, sampleNegativeBox, sampleNegativeFeatureValue);
 	classifierUpdate(samplePositiveFeatureValue, muPositive, sigmaPositive, learnRate);
 	classifierUpdate(sampleNegativeFeatureValue, muNegative, sigmaNegative, learnRate);
+
+    int radioMaxIndex = -1;
+    radioClassifier(samplePositiveFeatureValue,  radioMaxIndex);
+    float sum = std::accumulate(radios.begin(), radios.end(), 0);
+    ratiosInit = sum / radios.size();
+    ratiosInit =  *std::min_element(radios.begin(), radios.end());
+    if(ratiosInit <0 ) ratiosInit = 0;
     learnRate = 0.85f;
 
 }
@@ -276,7 +283,7 @@ void CompressiveTracker::processFrame(Mat& _frame, Rect& _objectBox,bool & track
 
 	// update
 	//yqh
-	if(radios[radioMaxIndex]>0)//radioMaxLast*0.8)
+    if(radios[radioMaxIndex]>ratiosInit)//radioMaxLast*0.8)
 	{
 		_objectBox = detectBox[radioMaxIndex];
 		sampleRect(_frame, _objectBox, rOuterPositive,		0.0,		PaticleNum, samplePositiveBox);
@@ -303,7 +310,7 @@ void CompressiveTracker::processFrame(Mat& _frame, Rect& _objectBox,bool & track
 //yqh
 void CompressiveTracker::PaticleFilter(Mat& _frame, Rect& _objectBox, int _PaticleNum, int& _radioMaxIndex)
 {
-    sampleRect(_frame, _objectBox, 20, 0.0, _PaticleNum,	detectBox);
+    sampleRect(_frame, _objectBox, 15, 0.0, _PaticleNum,	detectBox);
 	getFeatureValue(imageIntegral, detectBox, detectFeatureValue);
 	radioClassifier(detectFeatureValue, _radioMaxIndex);
 

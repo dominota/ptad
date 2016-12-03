@@ -18,9 +18,10 @@ class VOT
 {
     const double NaNdata =std::numeric_limits<double>::signaling_NaN();
 public:
-    VOT(  std::string & region_file1, std::string & images,std::string & ouput,
-          std::string & right)
+    VOT(  std::string  region_file1, std::string images,std::string  ouput,
+          std::string   iformat)
     {
+        if(region_file1.empty()) return;
         std::string region_file = region_file1 +"/init.txt";
         p_region_stream.open(region_file.c_str());
         if (p_region_stream.is_open()){
@@ -32,40 +33,17 @@ public:
             std::cerr << "Error loading initial region in file " << region_file << "!" << std::endl;
             p_init_rectangle = cv::Rect(0, 0, 0, 0);
         }
-      /*  p_region_stream.open(region_file.c_str());
-        if (p_region_stream.is_open()){
-            std::vector<float> x(4,0);
-            std::vector<float> y(4,0);
-            char ch;
-            p_region_stream >> x[0] >> ch >> y[0] >> ch;
-            p_region_stream >> x[1] >> ch >> y[1] >> ch;
-            p_region_stream >> x[2] >> ch >> y[2] >> ch;
-            p_region_stream >> x[3] >> ch >> y[3] >> ch;
-            std::sort(x.begin(),x.end());
-            std::sort(y.begin(),y.end());
-            p_init_rectangle = cv::Rect(x[0], y[0], x[3]-x[0], y[3]-y[0]);
-        }else{
-            std::cerr << "Error loading initial region in file " << region_file << "!" << std::endl;
-            p_init_rectangle = cv::Rect(0, 0, 0, 0);
-        }*/
         std::cout<<region_file<<std::endl;
         images = region_file1 +"/";
-        imagefiles = FileFunctions::Dir(images.c_str(), right.c_str(), true);
-        /*p_images_stream.open(images.c_str());
-        if (!p_images_stream.is_open())
-            std::cerr << "Error loading image file " << images << "!" << std::endl;*/
-        std::cout<<images<<std::endl;
-
-        std::string path1 = ouput +"Rect.txt";
+        imagefiles = FileFunctions::Dir(images.c_str(), iformat.c_str(), true);
+        /*std::string path1 = ouput +"Rect.txt";
         p_output_stream.open(path1.c_str());
         if (!p_output_stream.is_open())
-            std::cerr << "Error opening output file " << path1 << "!" << std::endl;
-        std::cout<<path1<<std::endl;
+            std::cerr << "Error opening output file " << path1 << "!" << std::endl;*/
         std::string path2 = ouput +".txt";
         p_output_stream2.open(path2.c_str());
         if (!p_output_stream2.is_open())
             std::cerr << "Error opening output1 file " << path2 << "!" << std::endl;
-        std::cout<<path2<<std::endl;
         label = 0;
     }
 
@@ -121,10 +99,6 @@ public:
 
     inline void outputBoundingBox(const cv::Rect2d & bbox, const bool & tracked)
     {
-        //   p_output_stream << bbox.x << ", " << bbox.y << ", " << bbox.width << ", " << bbox.height << std::endl;
-        /*p_output_stream2<< bbox.x << ", " << bbox.y << ", " << bbox.x + bbox.width << ", " << bbox.y<<", "
-                        << bbox.x + bbox.width << ", " << bbox.y + bbox.height<< ", " << bbox.x   << ", " << bbox.y + bbox.height
-                          <<std::endl;*/
         if(bbox.x>=0 && bbox.y >=0  && bbox.width>0 && bbox.height>0 && bbox.x + bbox.width < width && bbox.y + bbox.height <height)
         {
             if(tracked ) //tracked

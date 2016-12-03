@@ -99,7 +99,7 @@ void FHOGFeature::initHOGFeature(int learningMethod)
         {
         case L2R_LR:
         case L2R_L2LOSS_SVC:
-            param.eps = 0.01;
+            param.eps = 0.1;//0.01; //
             break;
         case L2R_L2LOSS_SVR:
             param.eps = 0.001;

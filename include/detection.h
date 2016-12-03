@@ -52,6 +52,7 @@ public:
        ReInitialization = 1,
        ReCorrecting = 2
     };
+
 private:
 
     int selectionFeature;
@@ -83,6 +84,7 @@ private:
     ///Variables
     //Integral Images
     float var;
+    float graymean;
     float col_var;
     float row_var;
     cv::Mat pEx;  //positive NN example
@@ -144,6 +146,7 @@ private:
     std::vector<BoundingBox> dbb;
     std::vector<float> dconf;
     std::vector<BoundingBox> candidatedbb;
+    bool iscandidate;
     std::vector<float> candidatedconf;
     std::vector<BoundingBox> grid;    // //sliding windows
     std::vector<int> BoundingBoxScales;    // //sliding windows
@@ -154,7 +157,11 @@ private:
     BoundingBox bbhull; // hull of good_boxes
     BoundingBox best_box; // maximum overlapping bbox
 
+    float threshold_;
     int directionFilterValid = 0;
+
+    int image_width;
+    int image_height;
 public:
     //Constructors
     void clear();
@@ -170,7 +177,9 @@ public:
     void generateNegativeData();
 
     void detect();     // random fern detect
-    void clusterConf(const std::vector<BoundingBox>& dbb,const std::vector<float>& dconf,std::vector<BoundingBox>& cbb,std::vector<float>& cconf);
+    void clusterConf(const std::vector<BoundingBox>& dbb,const std::vector<float>& dconf,
+                     std::vector<BoundingBox>& cbb,std::vector<float>& cconf
+                     ,std::vector<int> & ccnums);
     void evaluate();
     void learn();
     void buildGrid(const cv::Mat& img, const cv::Rect& box);
@@ -181,6 +190,7 @@ public:
     void bbPoints(std::vector<cv::Point2f>& points, const BoundingBox& bb);
     void bbPredict(const std::vector<cv::Point2f>& points1,const std::vector<cv::Point2f>& points2,
                    const BoundingBox& bb1,BoundingBox& bb2);
+    double getVar(const BoundingBox& box,const cv::Mat& sum,const cv::Mat& sqsum,float & mean);
     double getVar(const BoundingBox& box,const cv::Mat& sum,const cv::Mat& sqsum);
     double getColVar(const BoundingBox& box,const cv::Mat& sum,const cv::Mat& sqsum);
     double getRowVar(const BoundingBox& box,const cv::Mat& sum,const cv::Mat& sqsum);
@@ -189,11 +199,14 @@ public:
     int  clusterBB(const std::vector<BoundingBox>& dbb,std::vector<int>& indexes);
     void resample(const Mat& img, const Rect2d& r2, Mat_<uchar>& samples);
     void resample(const Mat& img, const RotatedRect& r2, Mat_<uchar>& samples);
-    void detectProcess(cv::Mat & image, BoundingBox & tboundingBox, bool & tracked);
-    int middleClassifier(BoundingBox bb ,bool & is_pass);
-    void determinateTrackingState(cv::Mat & image, BoundingBox & tboundingBox, bool & tracked,bool & dtracked, bool & tvalid,float & tconf);
+    void detectProcess(cv::Mat & image, BoundingBox & tboundingBox, bool & otracked);
+    int  middleClassifier(BoundingBox bb ,bool & is_pass);
+    void BoudingBoxToSlidingWindows(BoundingBox & bb,int & sidx);
+    void determinateTrackingState(cv::Mat & image, BoundingBox & tboundingBox,
+                                  bool & tracked,bool & dtracked,
+                                  bool & tvalid,float & tconf,float & dconf);
     BoundingBox  getDetectBox();
-    bool getReinitialization();
+    int getReinitialization();
     bool detected;
     int adjustingTypes;
 public:

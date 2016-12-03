@@ -49,6 +49,7 @@ private:
 	Mat detectFeatureValue;
 	RNG rng;
     vector<float> radios;
+    float ratiosInit;
     float radioMaxLast;
 	int PaticleNum;
 private:

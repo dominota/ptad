@@ -133,14 +133,15 @@ int getFeatureMaps(const IplImage* image, const int k, CvLSVMFeatureMapCaskade *
 
     if(!first)  // all parameters are the same in the detection
     {
-
         first = true;
+        allocFeatureMapObject(map, sizeX, sizeY, p);
     }
 
-    allocFeatureMapObject(map, sizeX, sizeY, p);
+
     (*map)->numFeatures  = p;
     (*map)->sizeX = sizeX;
     (*map)->sizeY = sizeY;
+    memset((*map)->map,0,sizeof(float) * (sizeX * sizeY * p));
 
     cvFilter2D(image, dx, &kernel_dx, cvPoint(-1, 0));
     cvFilter2D(image, dy, &kernel_dy, cvPoint(0, -1));
@@ -287,8 +288,8 @@ int getFeatureMaps(const IplImage* image, const int k, CvLSVMFeatureMapCaskade *
       }/*for(j = 1; j < sizeX - 1; j++)*/
     }/*for(i = 1; i < sizeY - 1; i++)*/
 
-   // cvReleaseImage(&dx);
-   // cvReleaseImage(&dy);
+    cvReleaseImage(&dx);
+    cvReleaseImage(&dy);
 
     free(w);
     free(nearest);
@@ -342,13 +343,14 @@ int normalizeAndTruncate(CvLSVMFeatureMapCaskade *map, const float alfa)
     sizeX -= 2;
     sizeY -= 2;
 
-    static bool first = false;
-    if(!first)
+    static bool first1 = false;
+    if(!first1)
     {
-      //  map->mapTruncate =  (float *)malloc (sizeof(float) * (sizeX * sizeY * pp));
-     //   first = true;
+       map->mapTruncate =  (float *)malloc (sizeof(float) * (sizeX * sizeY * pp));
+       first1 = true;
     }
-    newData = (float *)malloc (sizeof(float) * (sizeX * sizeY * pp));// map->mapTruncate;
+    newData = map->mapTruncate; //(float *)malloc (sizeof(float) * (sizeX * sizeY * pp));//
+    memset(newData,0,sizeof(float) * (sizeX * sizeY * pp));
 
     for(i = 1; i <= sizeY; i++)
     {
@@ -421,10 +423,10 @@ int normalizeAndTruncate(CvLSVMFeatureMapCaskade *map, const float alfa)
     map->sizeX = sizeX;
     map->sizeY = sizeY;
 
-    free (map->map);
+    //free (map->map);
     free (partOfNorm);
 
-    map->map = newData;
+    //map->map = newData;
 
     return LATENT_SVM_OK;
 }
@@ -462,14 +464,15 @@ int PCAFeatureMaps(CvLSVMFeatureMapCaskade *map)
 
    // newData = (float *)malloc (sizeof(float) * (sizeX * sizeY * pp));
 
-    static bool first = false;
-    if(!first)
+    static bool first2 = false;
+    if(!first2)
     {
-      //  map->mapPCA =  (float *)malloc (sizeof(float) * (sizeX * sizeY * pp));
-      //  first = true;
+        map->mapPCA =  (float *)malloc (sizeof(float) * (sizeX * sizeY * pp));
+        first2 = true;
     }
+    newData = map->mapPCA;//  (float *)malloc (sizeof(float) * (sizeX * sizeY * pp));//
+    memset(newData,0,sizeof(float) * (sizeX * sizeY * pp));
 
-    newData =   (float *)malloc (sizeof(float) * (sizeX * sizeY * pp));//map->mapPCA;
     for(i = 0; i < sizeY; i++)
     {
         for(j = 0; j < sizeX; j++)
@@ -482,7 +485,7 @@ int PCAFeatureMaps(CvLSVMFeatureMapCaskade *map)
                 val = 0;
                 for(ii = 0; ii < yp; ii++)
                 {
-                    val += map->map[pos1 + yp * xp + ii * xp * 2 + jj];
+                    val += map->mapTruncate[pos1 + yp * xp + ii * xp * 2 + jj];
                 }/*for(ii = 0; ii < yp; ii++)*/
                 newData[pos2 + k] = val * ny;
                 k++;
@@ -492,7 +495,7 @@ int PCAFeatureMaps(CvLSVMFeatureMapCaskade *map)
                 val = 0;
                 for(ii = 0; ii < yp; ii++)
                 {
-                    val += map->map[pos1 + ii * xp + jj];
+                    val += map->mapTruncate[pos1 + ii * xp + jj];
                 }/*for(ii = 0; ii < yp; ii++)*/
                 newData[pos2 + k] = val * ny;
                 k++;
@@ -502,7 +505,7 @@ int PCAFeatureMaps(CvLSVMFeatureMapCaskade *map)
                 val = 0;
                 for(jj = 0; jj < 2 * xp; jj++)
                 {
-                    val += map->map[pos1 + yp * xp + ii * xp * 2 + jj];
+                    val += map->mapTruncate[pos1 + yp * xp + ii * xp * 2 + jj];
                 }/*for(jj = 0; jj < xp; jj++)*/
                 newData[pos2 + k] = val * nx;
                 k++;
@@ -513,9 +516,10 @@ int PCAFeatureMaps(CvLSVMFeatureMapCaskade *map)
 
     map->numFeatures = pp;
 
-    free (map->map);
+    //free (map->map);
 
-    map->map = newData;
+    //map->map = newData;
+    map->mapPCA = newData;
 
     return LATENT_SVM_OK;
 }

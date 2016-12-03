@@ -66,8 +66,6 @@ public:
     void make_old(int val);
     int  select(lasvm_t *sv) ;
 
-
-
     void classifier(std::vector<cv::Mat> & States,std::vector<float> & prob);
     void classifierUpdate(std::vector<cv::Mat> & positiveStates, std::vector<cv::Mat> & negativeStates);
 

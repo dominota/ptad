@@ -74,8 +74,8 @@ typedef struct{
     int sizeY;
     int numFeatures;
     float *map;
-   // float *mapTruncate;
-  //  float *mapPCA;
+    float *mapTruncate;
+    float *mapPCA;
 } CvLSVMFeatureMapCaskade;
 
 

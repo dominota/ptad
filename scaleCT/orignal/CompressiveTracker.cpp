@@ -271,7 +271,7 @@ void CompressiveTracker::reinit(Mat& _frame, Rect& _objectBox)
     learnRate = 0.85f;
 }
 
-void CompressiveTracker::processFrame(Mat& _frame, Rect& _objectBox)
+void CompressiveTracker::processFrame(Mat& _frame, Rect& _objectBox, bool & tracked)
 {
 	// predict
 	sampleRect(_frame, _objectBox, rSearchWindow,detectBox);
@@ -281,13 +281,19 @@ void CompressiveTracker::processFrame(Mat& _frame, Rect& _objectBox)
 	float radioMax;
 	radioClassifier(muPositive, sigmaPositive, muNegative, sigmaNegative, detectFeatureValue, radioMax, radioMaxIndex);
 	_objectBox = detectBox[radioMaxIndex];
+    if(radioMax > 0)
+    {
+        tracked = true;
+        // update
+        sampleRect(_frame, _objectBox, rOuterPositive, 0.0, 1000000, samplePositiveBox);
+        sampleRect(_frame, _objectBox, rSearchWindow*1.5, rOuterPositive+4.0, 100, sampleNegativeBox);
 
-	// update
-	sampleRect(_frame, _objectBox, rOuterPositive, 0.0, 1000000, samplePositiveBox);
-	sampleRect(_frame, _objectBox, rSearchWindow*1.5, rOuterPositive+4.0, 100, sampleNegativeBox);
-	
-	getFeatureValue(imageIntegral, samplePositiveBox, samplePositiveFeatureValue);
-	getFeatureValue(imageIntegral, sampleNegativeBox, sampleNegativeFeatureValue);
-	classifierUpdate(samplePositiveFeatureValue, muPositive, sigmaPositive, learnRate);
-	classifierUpdate(sampleNegativeFeatureValue, muNegative, sigmaNegative, learnRate);
+        getFeatureValue(imageIntegral, samplePositiveBox, samplePositiveFeatureValue);
+        getFeatureValue(imageIntegral, sampleNegativeBox, sampleNegativeFeatureValue);
+        classifierUpdate(samplePositiveFeatureValue, muPositive, sigmaPositive, learnRate);
+        classifierUpdate(sampleNegativeFeatureValue, muNegative, sigmaNegative, learnRate);
+    }
+    else
+        tracked = false;
+
 }
